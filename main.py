@@ -5,11 +5,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    name = "Temple"
-    return render_template('index.html', name=name)
+    return render_template('index.html')
 
 @app.route('/test')
-def spark():
+def test():
 	return render_template('spark.html')
 
 @app.route('/obstacleAvoidance')

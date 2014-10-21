@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div class="post">
+						<h2 class="title">Who We Are</h2>
+						
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<p>We are Temple University Electrical Engineering students who for most of us are attending our very first hackathon.</p>
+							<p></p>
+							<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a>	</p>
+						</div>
+					</div>
+					<div class="post">
+						<h2 class="title">What we're doing</h2>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<p>CleanAirForMe is a website and hardware hack dedicated to giving you notifications on your home CO, CH4, and H20 Humidity levels while you are both home or away.</p>  <p>Too many people die each year from accidental Carbon Monoxide poisoning, too many houses are damaged by humidity, and too many homes are destroyed by gas leaks that go undetected.  Enter, CleanAirForMe. We wanted to dedicate our time to providing you with clean air.</p> <p>If your air is even the slightest bit out of the ordinary, we'll have you informed via webiste and your home filtration system turned on.  If that isn't enough, we'll contact the authorities to help you at your home.  Your comfort and safety are our greatest priority and hope to have clean air for you at all times!</p>
+							<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+						</div>
+					</div>
+					<div class="post">
+						<h2 class="title">Carbon Monoxide</h2>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<p>Level of CO</p>
+							<p>
+							
+							<span id="uptime"></span><br>
+							<span id="tstamp"></span> <br><br>
+
+							<script type="text/javascript">
+    function start() {
+        document.getElementById("uptime").innerHTML = "Waiting for data...";
+        var deviceID = "54ff6b066667515129181367";
+        var accessToken = "7e24d4603b009397db91fc66e0b3df9829b40159";
+        var eventSource = new EventSource("https://api.spark.io/v1/devices/" + deviceID + "/events/?access_token=" + accessToken);
+        eventSource.addEventListener('open', function(e) {
+            console.log("Opened!"); },false);
+        eventSource.addEventListener('error', function(e) {
+            console.log("Errored!"); },false);
+        eventSource.addEventListener('Uptime', function(e) {
+            var parsedData = JSON.parse(e.data);
+            var tempSpan = document.getElementById("uptime");
+            var tsSpan   = document.getElementById("tstamp");
+            tempSpan.innerHTML = "Core: " + parsedData.coreid + " uptime: " + parsedData.data;
+                        tempSpan.style.fontSize = "28px";
+                        }, false);
+                eventSource.addEventListener('Working', function(e) {
+            var parsedData = JSON.parse(e.data);
+                        var tempSpan2 = document.getElementById("working");
+            tempSpan2.innerHTML = "This is " + parsedData.data;
+                        tempSpan2.style.fontSize = "28px";
+                        }, false);
+                eventSource.addEventListener('Yay', function(e) {
+                        var parsedData = JSON.parse(e.data);
+            var tempSpan3 = document.getElementById("yay");
+            tempSpan3.innerHTML = "wooo " + parsedData.data;
+                        tempSpan3.style.fontSize = "28px";
+            }, false);
+    }
+    </script>
+<script>
+start();
+</script>
+
+
+
+							</p>
+						</div>
+					</div>
+					<div class="post">
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1>Cleanair</h1>
+
+					</div>
+					<div id="menu">
+						<ul>
+							<li class="current_page_item"><a href="#">Home</a></li>
+							<li><a href="#">Monitor</a></li>
+							<li><a href="#">Photos</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Links</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p>Footer stuff.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <span id="uptime"></span><br>
+    <span id="tstamp"></span>
+    <br><br>
+<script type="text/javascript">
+    function start() {
+        console.log("ZACK");
+        document.getElementById("uptime").innerHTML = "Waiting for data...";
+        var deviceID = "54ff6b066667515129181367";
+        var accessToken = "7e24d4603b009397db91fc66e0b3df9829b40159";
+        var eventSource = new EventSource("https://api.spark.io/v1/devices/" + d$
+
+        eventSource.addEventListener('open', function(e) {
+            console.log("Opened!"); },false);
+
+        eventSource.addEventListener('error', function(e) {
+            console.log("Errored!"); },false);
+
+        eventSource.addEventListener('Uptime', function(e) {
+            var parsedData = JSON.parse(e.data);
+            var tempSpan = document.getElementById("uptime");
+            var tsSpan   = document.getElementById("tstamp");
+            tempSpan.innerHTML = "Core: " + parsedData.coreid + " uptime: " + pa$
+                        tempSpan.style.fontSize = "28px";
+                        }, false);
+
+                eventSource.addEventListener('Working', function(e) {
+            var parsedData = JSON.parse(e.data);
+                        var tempSpan2 = document.getElementById("working");
+            tempSpan2.innerHTML = "This is " + parsedData.data;
+                        tempSpan2.style.fontSize = "28px";
+                        }, false);
+
+                eventSource.addEventListener('Yay', function(e) {
+                        var parsedData = JSON.parse(e.data);
+            var tempSpan3 = document.getElementById("yay");
+            tempSpan3.innerHTML = "wooo " + parsedData.data;
+                        tempSpan3.style.fontSize = "28px";
+            }, false);
+	}
+	</script>
+	<script>
+	start();
+	</script>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div class="post">
+						<h2 class="title">Welcome</h2>
+						
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<script type="text/javascript">
+							start();
+							</script>
+							<p>Did we do it?</p>
+							<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
+							<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a>	</p>
+						</div>
+					</div>
+					<div class="post">
+						<h2 class="title">Lorem ipsum sed aliquam</h2>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
+							<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+						</div>
+					</div>
+					<div class="post">
+						<h2 class="title">Consecteteur hendrerit</h2>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
+							<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+						</div>
+					</div>
+					<div class="post">
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1>SafeInhale</h1>
+
+					</div>
+					<div id="menu">
+						<ul>
+							<li class="current_page_item"><a href="#">Home</a></li>
+							<li><a href="javascript:void(0);" onclick="start();">Blog</a></li>
+							<li><a href="#">Photos</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Links</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p>Footer stuff.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

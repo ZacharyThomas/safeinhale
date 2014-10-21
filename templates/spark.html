@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+    <span id="uptime"></span><br>
+    <span id="tstamp"></span> <br><br>
+    <script type="text/javascript">
+    function start() {
+        document.getElementById("uptime").innerHTML = "Waiting for data...";
+        var deviceID = "54ff6b066667515129181367";
+        var accessToken = "7e24d4603b009397db91fc66e0b3df9829b40159";
+        var eventSource = new EventSource("https://api.spark.io/v1/devices/" + deviceID + "/events/?access_token=" + accessToken);
+        eventSource.addEventListener('open', function(e) {
+            console.log("Opened!"); },false);
+        eventSource.addEventListener('error', function(e) {
+            console.log("Errored!"); },false);
+        eventSource.addEventListener('Uptime', function(e) {
+            var parsedData = JSON.parse(e.data);
+            var tempSpan = document.getElementById("uptime");
+            var tsSpan   = document.getElementById("tstamp");
+            tempSpan.innerHTML = "Core: " + parsedData.coreid + " uptime: " + parsedData.data;
+			tempSpan.style.fontSize = "28px";
+			}, false);
+		eventSource.addEventListener('Working', function(e) {
+            var parsedData = JSON.parse(e.data);
+			var tempSpan2 = document.getElementById("working");
+            tempSpan2.innerHTML = "This is " + parsedData.data;
+			tempSpan2.style.fontSize = "28px";
+			}, false);
+		eventSource.addEventListener('Yay', function(e) {
+			var parsedData = JSON.parse(e.data);
+            var tempSpan3 = document.getElementById("yay");
+            tempSpan3.innerHTML = "wooo " + parsedData.data;
+			tempSpan3.style.fontSize = "28px";	
+            }, false);
+    }
+    </script>
+<script>
+start();
+</script>
+</body>
+</html>
